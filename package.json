@@ -1,7 +1,7 @@
 {
   "name": "star-wars-app",
   "version": "0.1.0",
-  "homepage": "https://vitalick37.github.io/react-star-wars/",
+  "homepage": "https://vitalick37.github.io/star-wars-app/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
