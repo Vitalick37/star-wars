@@ -24,9 +24,11 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
+    "deploy": "npm run build && npm run build-gh-pages",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
+    "build-gh-pages": "gh-pages -d build",
     "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
@@ -69,6 +71,7 @@
     "@storybook/react": "^6.5.16",
     "@storybook/testing-library": "^0.1.0",
     "babel-plugin-named-exports-order": "^0.0.2",
+    "gh-pages": "^5.0.0",
     "i": "^0.3.7",
     "npm": "^8.19.2",
     "react-app-rewire-alias": "^1.1.7",
