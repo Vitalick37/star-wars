@@ -1,59 +1,37 @@
-import { useState ,useEffect } from 'react';
 import PropTypes from 'prop-types';
-
-import { withErrorApi } from '@hoc-helpers/withErrorApi';
-
-import PeopleList from '@components/PeoplePage/PeopleList';
-
-import { getApiResource } from '../../utils/network';
-
-import { API_PEOPLE } from '@constants/api';
-import { getPeopleId, getPeopleImage } from '@services/getPeopleData';
-
 import styles from './PeoplePage.module.css';
+import { getPeopleId, getPeopleImage } from '@services/getPeopleData';
+import PeopleList from '@components/PeoplePage/PeopleList';
+import { Navigate } from "react-router-dom";
 
-const PeoplePage = ({ setErrorApi }) => {
-    const [people, setPeople] = useState(null);
-    // const [errorApi, setErrorApi] = useState(false);
+
+const PeoplePage = (props) => {
 
 
-    const getResource = async (url) => {
-        const res = await getApiResource(url);
+    const peopleList = props.people.map(({name, url}) => {
 
-        if (res) {
-            const peopleList = res.results.map(({ name, url }) => {
-                const id = getPeopleId(url);
-                const img = getPeopleImage(id);
-                
-                return {
-                    id,
-                    name,
-                    img,
-                }
-            })
-            
-            setPeople(peopleList);
-            setErrorApi(false);
-        } else {
-            setErrorApi(true);
+        const id = getPeopleId(url);
+        const img = getPeopleImage(id);
+
+        return {
+            id,
+            name,
+            img,
+            }
         }
+    )
 
-    }
-
-    useEffect(() => {
-        getResource(API_PEOPLE);
-    }, []);
-
+    if(props.isError) return <Navigate to="/error"/> 
+    
     return (
         <> 
-            <h1 className='header__text'>Navigation</h1>
-            {people && <PeopleList people={people} />}
+            {peopleList.length > 0 && <PeopleList {...props} people={peopleList}/>}
         </>
     )
 }
 
 PeoplePage.propTypes = {
-    setErrorApi: PropTypes.func,
+    people: PropTypes.array,
 }
 
-export default withErrorApi(PeoplePage);
+export default PeoplePage;

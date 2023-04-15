@@ -15,7 +15,7 @@ module.exports = function override(config, env) {
         '@store': 'src/store',
         '@services': 'src/services',
         '@context': 'src/context',
-        '@routes': 'src/routes',
+        '@redux': 'src/redux',
     })(config);
     return config;
     }

@@ -1,0 +1,20 @@
+.list__pages {
+    list-style-type: none;
+    color: #fff;
+    padding: 0px 40px;
+    display: flex;
+    gap: 10px;
+}
+.item__pages,
+.item__pages_active {
+    cursor: pointer;
+}
+.item__pages_active {
+    font-size: 18;
+    color: #b8a1a1;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

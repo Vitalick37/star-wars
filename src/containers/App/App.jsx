@@ -1,30 +1,29 @@
 // import cn from 'classnames';
 // import './App.css';
 // import { getApiResource } from './../../utils/network';
-import PeoplePage from '@containers/PeoplePage';
-import HomePage from '@containers/HomePage';
-import NotFoundPage from '@containers/NotFoundPage';
+import styles from './App.module.css';
+import { Routes, Route, } from "react-router-dom";
 
 import Header from '@components/Header';
+import routesConfig from '@routes/routesConfig';
 
-import { Route, Routes } from 'react-router-dom';
 
-import styles from './App.module.css';
 
 const App = () => {
   return (
-    <>
+    <div className={styles.wrapper}>
+      <Header />
+
       <div className={styles.wrapper}>
-        <Routes>
-          <Route path="/" element={<Header />}>
-            <Route index element={<HomePage />} />
-            <Route path="/people"  element={<PeoplePage />} />
-            <Route path="/not-found"  element={<NotFoundPage />} />
-            <Route path="/*"  element={<NotFoundPage />} />
-          </Route>
-        </Routes>
+
+      <Routes>
+          {routesConfig.map((r, index) => (
+            <Route key={index} path={r.path} element={r.element} />)
+          )}
+      </Routes>
+
       </div>
-    </>
+    </div>
   )
 }
 

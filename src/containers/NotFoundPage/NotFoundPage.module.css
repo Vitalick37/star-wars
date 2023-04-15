@@ -1,0 +1,28 @@
+.img {
+    width: 250px;
+    margin: auto;
+    margin-top: 100px;
+}
+.text {
+    margin-top: var(--spacing-large);
+    font-size: var(--font-size-subheader);
+    color: var(--color-white);
+    text-align: center;
+    text-shadow: var(--text-shadow-blue);
+}
+.link {
+    display: block;
+    margin-top: var(--spacing-large);
+    padding: 7px 10px;
+    min-width: 70px;
+    border: 2px solid transparent;
+    border-radius: var(--border-radius-small);
+    color: var(--color-white);
+    text-align: center;
+    font-family: var(--font-family-main);
+    font-size: var(--font-size-subheader);
+    text-decoration: none;
+    font-weight: var(--font-bold);
+    text-shadow: var(--text-shadow-yellow);
+    transition: var(--transition);
+}
